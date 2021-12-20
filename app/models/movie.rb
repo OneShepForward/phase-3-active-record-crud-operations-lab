@@ -25,7 +25,24 @@ class Movie < ActiveRecord::Base
     end
 
     def self.find_movies_after_2002
-        Movie.where(release_date > 2002)
+        Movie.where("release_date > 2002")
+    end
+
+    def update_with_attributes(new_attributes)
+        self.update(new_attributes)
+    end
+
+    def self.update_all_titles(new_title)
+        Movie.update(title: new_title)
+    end
+
+    def self.delete_by_id(num)
+        Movie.destroy(num)
+    end
+
+    def self.delete_all_movies
+        Movie.destroy_all
     end
 
 end
+  
